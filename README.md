@@ -42,11 +42,11 @@ CommandManager::addCommand('/^kek$/iu', function ($Zero, $user, $params){
 
 ## Методы
 ### Сообщения
-Отправка сообщений
+>* Отправка сообщений
 ```php 
 $Zero->send('Сообщение');
 ```
-Пересылка сообщений
+>* Пересылка сообщений
 ```php
 $Zero->reply('Сообщение/Ответ');
 ```
@@ -81,7 +81,7 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 
 ### Работа кнопок
 Как создавать одну или несколько кнопок в ряд.
-> Создание несколько в один ряд
+>* Создание несколько в один ряд
 ```php
 <?php
 global $button; //Берем переменную с классом
@@ -94,7 +94,7 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     ]);
 });
 ```
-> Кнопки по рядам
+>* Кнопки по рядам
 ```php
 <?php
 global $button; //Берем переменную с классом
@@ -105,7 +105,7 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     ]);
 });
 ```
-> А если несколько кнопок в первом ряду, и одна в другом
+>* А если несколько кнопок в первом ряду, и одна в другом
 ```php
 <?php
 global $button; //Берем переменную с классом
@@ -116,7 +116,7 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     ]);
 });
 ```
-> Очистка кнопок без one_time
+>* Очистка кнопок без one_time
 ```php
 <?php
 global $button; //Берем переменную с классом
