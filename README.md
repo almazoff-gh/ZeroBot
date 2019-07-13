@@ -5,6 +5,7 @@
 ## Оглавление
 * [Установка и Подключение](#Установка)
 * [Методы и Классы](#Методы)
+* [Кнопки](#Кнопки)
 
 ## Установка
 1) Скачиваем файлы
@@ -55,4 +56,71 @@ $user = $Zero->user(); //id пользователя берется автома
 $user['first_name']; //Имя
 $user['last_name']; //Фамилия
 $user['id']; //Ид юзера
+```
+## Кнопки
+Что-бы сделать кнопку, му зайдем в наш файл с командой, например cmds/Test.php
+> Список цветов кнопок
+>* COLOR_RED - Красный
+>* COLOR_BLUE - Синий
+>* COLOR_WHITE - Белый
+>* COLOR_GREEN - Зеленый
+
+```php
+<?php
+global $button; //Берем переменную с классом
+CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    $button->sendbtn('Нажми на кнопку', true, [ 
+        [$button->getbtn(0, 'Кнопочка', COLOR_RED)]
+    ]);
+});
+```
+(Нажми на кнопочку) - Это текст который отправится вместе с кнопкой/кнопками.
+(true) - Это one_time, если сделать true, то кнопки уберутся после первого нажатия, false - можно будет бесконечно жать кнопки и они не исчезнут после нажатий.
+(0) - PayLoad, это ид кнопки. Задаем любую цифру.
+(COLOR_RED) - Цвет.
+
+### Работа кнопок
+Как создавать одну или несколько кнопок в ряд.
+> Создание несколько в один ряд
+```php
+<?php
+global $button; //Берем переменную с классом
+CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    $button->sendbtn('Нажми на кнопку', true, [ 
+        [
+             $button->getbtn(0, 'Кнопочка', COLOR_RED),
+             $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE)
+        ]
+    ]);
+});
+```
+> Кнопки по рядам
+```php
+<?php
+global $button; //Берем переменную с классом
+CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    $button->sendbtn('Нажми на кнопку', true, [ 
+        [ $button->getbtn(0, 'Кнопочка', COLOR_RED) ],
+        [ $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE) ]
+    ]);
+});
+```
+> А если несколько кнопок в первом ряду, и одна в другом
+```php
+<?php
+global $button; //Берем переменную с классом
+CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    $button->sendbtn('Нажми на кнопку', true, [ 
+        [ $button->getbtn(0, 'Кнопочка', COLOR_RED), $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE) ],
+        [ $button->getbtn(3, 'Кнопочка 3', COLOR_BLUE) ]
+    ]);
+});
+```
+> Очистка кнопок без one_time
+```php
+<?php
+global $button; //Берем переменную с классом
+CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    $button->clearbtn();
+});
 ```
