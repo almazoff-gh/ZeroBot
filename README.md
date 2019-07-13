@@ -29,7 +29,7 @@ $events = [
 $Zero = new Zero($token);
 $Zero->longpoll->init();
 ```
-4) Папка cmds, в ней один файл: Test.php. Их можно самим создавать, они автоматически будут подключатся, и добавляем команду по шаблону.
+4) Папка cmds, в ней один файл: Test.php. Их можно самим создавать, они автоматически будут подключатся, и добавляем команду по шаблону. В один файл тоже можно добавлять команды.
 ```php
 CommandManager::addCommand('/^kek$/iu', function ($Zero, $user, $params){
     $Zero->reply($user['first_name'].", Cheburek");
