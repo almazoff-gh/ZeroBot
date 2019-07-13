@@ -53,5 +53,5 @@ $Zero->reply('Сообщение/Ответ');
 $user = $Zero->user();
 $user['first_name']; //Имя
 $user['last_name']; //Фамилия
-$user['id]; //Ид юзера
+$user['id']; //Ид юзера
 ```
