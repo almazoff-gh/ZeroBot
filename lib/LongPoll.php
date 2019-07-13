@@ -13,7 +13,14 @@ class LongPoll{
 
         while (TRUE){
             global $object;
-            $request = file_get_contents("{$server}?act=a_check&key={$key}&ts={$ts}&wait=25");
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "{$server}?act=a_check&key={$key}&ts={$ts}&wait=25");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FORBID_REUSE, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            $request = curl_exec($ch);
             $request = json_decode($request, 1);
 
             if(isset($request['failed'])){
@@ -33,12 +40,14 @@ class LongPoll{
                 }
             }else{
                 $ts = $ts + 1;
-                $object = $request['updates'][0]['object'];
-                $type = $request['updates'][0]['type'];
-
-                if(isset($events[$type]))
-                    $events[$type]($object, $Zero);
+                if(isset($request['updates'][0]['type'])) {
+                    $object = $request['updates'][0]['object'];
+                    $type = $request['updates'][0]['type'];
+                    if(isset($events[$type]))
+                        $events[$type]($object, $Zero);
+                }
             }
+            curl_close($ch);
         }
     }
 }

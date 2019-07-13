@@ -3,18 +3,20 @@ require('lib/Colors.php');
 require('lib/functions.php');
 require('lib/vk_api.php');
 require('lib/LongPoll.php');
+require('lib/Button.php');
 require('lib/CommandManager.php');
 
 if(php_sapi_name() != 'cli') die('Запускай меня через консоль!');
 
 class Zero{
     function __construct($token){
-        global $vk_api, $count;
+        global $vk_api, $count, $button;
         $this->v = '0.1';
         notify("Запуск ZeroBot v{$this->v}...");
         $this->token = $token;
         $vk_api = new VK_API($token);
         $this->check_token(); //Проверка на валидацию токена
+        $button = new Button();
         $CommandManager = new CommandManager();
         $CommandManager->start();
         notify("CommandManager, Подключено ".$count);
@@ -24,7 +26,7 @@ class Zero{
     function check_token(){
         global $vk_api;
         $date = $vk_api->groups_getById();
-        if($date['error']['error_code'] == 5)
+        if(isset($date['error']['error_code']) and $date['error']['error_code'] == 5)
             die("Неверный токен!\n");
         else
             $this->group_id = $date['response'][0]['id'];

@@ -1,8 +1,4 @@
 <?php
-/*
-Создатель ядра: Xizezs(vk.com/Xizezs)
-*/
-
 require("lib/Zero.php");
 
 $token = ''; //Токен Сообщества
