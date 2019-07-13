@@ -17,11 +17,11 @@ $token = ''; //Токен Сообщества
 //Список эвентов таких как получения сообщения, отписка и подписка и тд.
 
 $events = [
-    'message_new' => function($object, $Zero){
-        global $cmds;
+    'message_new' => function($object, $Zero){ //Действие выполняется при получение сообщения
+        global $cmds; //Получаем список комманд
         foreach ($cmds as $cmd){
-            if(preg_match_all($cmd['r'], $object['text'], $params, PREG_SET_ORDER)){
-                $cmd['f']($Zero, $Zero->user(), $params[0]);
+            if(preg_match_all($cmd['r'], $object['text'], $params, PREG_SET_ORDER)){ //Ищем команду в сообщение пользователя
+                $cmd['f']($Zero, $Zero->user(), $params[0]); //Выполняем функцию если команда найдена
             }
         }
     }
@@ -50,7 +50,7 @@ $Zero->reply('Сообщение/Ответ');
 ```
 ### Данные о человеке
 ```php
-$user = $Zero->user();
+$user = $Zero->user(); //id пользователя берется автоматически, ничего указывать не надо
 $user['first_name']; //Имя
 $user['last_name']; //Фамилия
 $user['id']; //Ид юзера
