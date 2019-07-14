@@ -66,9 +66,8 @@ $user['id']; //Ид юзера
 >* COLOR_GREEN - Зеленый
 
 ```php
-<?php
-global $button; //Берем переменную с классом
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    global $button; //Берем переменную с классом
     $button->sendbtn('Нажми на кнопку', true, [ 
         [$button->getbtn(0, 'Кнопочка', COLOR_RED)]
     ]);
@@ -83,9 +82,8 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 Как создавать одну или несколько кнопок в ряд.
 >* Создание несколько в один ряд
 ```php
-<?php
-global $button; //Берем переменную с классом
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    global $button; //Берем переменную с классом
     $button->sendbtn('Нажми на кнопку', true, [ 
         [
              $button->getbtn(0, 'Кнопочка', COLOR_RED),
@@ -96,9 +94,8 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 ```
 >* Кнопки по рядам
 ```php
-<?php
-global $button; //Берем переменную с классом
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    global $button; //Берем переменную с классом
     $button->sendbtn('Нажми на кнопку', true, [ 
         [ $button->getbtn(0, 'Кнопочка', COLOR_RED) ],
         [ $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE) ]
@@ -107,9 +104,8 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 ```
 >* А если несколько кнопок в первом ряду, и одна в другом
 ```php
-<?php
-global $button; //Берем переменную с классом
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    global $button; //Берем переменную с классом
     $button->sendbtn('Нажми на кнопку', true, [ 
         [ $button->getbtn(0, 'Кнопочка', COLOR_RED), $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE) ],
         [ $button->getbtn(3, 'Кнопочка 3', COLOR_BLUE) ]
@@ -118,9 +114,8 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 ```
 >* Очистка кнопок без one_time
 ```php
-<?php
-global $button; //Берем переменную с классом
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
+    global $button; //Берем переменную с классом
     $button->clearbtn();
 });
 ```
