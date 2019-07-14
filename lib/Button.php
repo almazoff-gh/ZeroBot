@@ -29,6 +29,6 @@ class Button{
             'one_time' => true,
             'buttons' => []
         ];
-        $vk_api->messages_send(['peer_id' => $object['peer_id'], 'random_id' => 0, 'message' => $text, 'keyboard' => json_encode($btn)]);
+        $vk_api->messages_send(['peer_id' => $object['peer_id'], 'random_id' => 0, 'keyboard' => json_encode($btn)]);
     }
 }
