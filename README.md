@@ -75,8 +75,8 @@ $user['id']; //Ид юзера
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     global $button; //Берем переменную с классом
-    $button->sendbtn('Нажми на кнопку', true, [ 
-        [$button->getbtn(0, 'Кнопочка', COLOR_RED)]
+    $button->btn_send('Нажми на кнопку', true, [ 
+        [$button->btn(0, 'Кнопочка', COLOR_RED)]
     ]);
 });
 ```
