@@ -71,7 +71,7 @@ $user['id']; //Ид юзера
 >* $button->btn_loc($payload) - Местоположение пользователя
 >* $button->btn_pay($payload, $hash) - Отправка денег
 >* $button->btn_clear() - Очистка кнопок, если one_time=false
->* Подробнее можно почитать здесь: https://vk.com/dev/bots_docs_3
+>* Подробнее можно прочитать здесь: https://vk.com/dev/bots_docs_3
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     global $button; //Берем переменную с классом
