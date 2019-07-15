@@ -11,7 +11,7 @@ if(php_sapi_name() != 'cli') die('Запускай меня через конс�
 class Zero{
     function __construct($token){
         global $vk_api, $count, $button;
-        $this->v = '0.2';
+        $this->v = '0.3';
         notify("Запуск ZeroBot v{$this->v}...");
         $this->token = $token;
         $vk_api = new VK_API($token);
