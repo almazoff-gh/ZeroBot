@@ -70,7 +70,7 @@ $user['id']; //Ид юзера
 >* $button->btn_app($payload, $app_id, $owner_id, $text) - Запуск приложения группы
 >* $button->btn_loc($payload) - Местоположение пользователя
 >* $button->btn_pay($payload, $hash) - Отправка денег
->* $button->btn_clear() - Очистка кнпок, если one_time=false
+>* $button->btn_clear() - Очистка кнопок, если one_time=false
 >* Подробнее можно почитать здесь: https://vk.com/dev/bots_docs_3
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
