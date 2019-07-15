@@ -65,6 +65,13 @@ $user['id']; //Ид юзера
 >* COLOR_WHITE - Белый
 >* COLOR_GREEN - Зеленый
 
+> Типы кнопок
+>* $button->btn($payload=цифра, COLOR_ЦВЕТ, $text); - Обычная кнопка
+>* $button->btn_app($payload, $app_id, $owner_id, $text) - Запуск приложения группы
+>* $button->btn_loc($payload) - Местоположение пользователя
+>* $button->btn_pay($payload, $hash) - Отправка денег
+>* $button->btn_clear() - Очистка кнпок, если one_time=false
+>* Подробнее можно почитать здесь: https://vk.com/dev/bots_docs_3
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     global $button; //Берем переменную с классом
@@ -84,10 +91,10 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     global $button; //Берем переменную с классом
-    $button->sendbtn('Нажми на кнопку', true, [ 
+    $button->btn_send('Нажми на кнопку', true, [ 
         [
-             $button->getbtn(0, 'Кнопочка', COLOR_RED),
-             $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE)
+             $button->btn(0, 'Кнопочка', COLOR_RED),
+             $button->btn(1, 'Кнопочка 2', COLOR_BLUE)
         ]
     ]);
 });
@@ -96,9 +103,9 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     global $button; //Берем переменную с классом
-    $button->sendbtn('Нажми на кнопку', true, [ 
-        [ $button->getbtn(0, 'Кнопочка', COLOR_RED) ],
-        [ $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE) ]
+    $button->btn_send('Нажми на кнопку', true, [ 
+        [ $button->btn(0, 'Кнопочка', COLOR_RED) ],
+        [ $button->btn(1, 'Кнопочка 2', COLOR_BLUE) ]
     ]);
 });
 ```
@@ -106,9 +113,9 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     global $button; //Берем переменную с классом
-    $button->sendbtn('Нажми на кнопку', true, [ 
-        [ $button->getbtn(0, 'Кнопочка', COLOR_RED), $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE) ],
-        [ $button->getbtn(3, 'Кнопочка 3', COLOR_BLUE) ]
+    $button->btn_send('Нажми на кнопку', true, [ 
+        [ $button->btn(0, 'Кнопочка', COLOR_RED), $button->getbtn(1, 'Кнопочка 2', COLOR_BLUE) ],
+        [ $button->btn(3, 'Кнопочка 3', COLOR_BLUE) ]
     ]);
 });
 ```
@@ -116,6 +123,6 @@ CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
 ```php
 CommandManager::addCommand('/^Test$/iu', function ($Zero, $user, $params){
     global $button; //Берем переменную с классом
-    $button->clearbtn();
+    $button->btn_clear();
 });
 ```
