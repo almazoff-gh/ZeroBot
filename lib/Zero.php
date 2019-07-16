@@ -41,6 +41,7 @@ class Zero{
 
     function reply($text){
         global $vk_api, $object;
+        if(!isset($object['peer_id'])) $object['peer_id'] = $object['user_id'];
         $vk_api->messages_send(['peer_id' => $object['peer_id'], 'random_id' => 0, 'reply_to' => $object['id'], 'message' => $text]);
     }
 
