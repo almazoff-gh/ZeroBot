@@ -66,7 +66,7 @@ $user['id']; //Ид юзера
 >* COLOR_GREEN - Зеленый
 
 > Типы кнопок
->* $button->btn($payload=цифра, COLOR_ЦВЕТ, $text); - Обычная кнопка
+>* $button->btn($payload=цифра, $text, COLOR_ЦВЕТ); - Обычная кнопка
 >* $button->btn_app($payload, $app_id, $owner_id, $text) - Запуск приложения группы
 >* $button->btn_loc($payload) - Местоположение пользователя
 >* $button->btn_pay($payload, $hash) - Отправка денег
