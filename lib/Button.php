@@ -13,7 +13,7 @@ class Button{
         ];
         $vk_api->messages_send(['peer_id' => $object['peer_id'], 'random_id' => 0, 'message' => $text, 'keyboard' => json_encode($btn)]);
     }
-    function btn($payload, $color, $text){
+    function btn($payload, $text, $color){
         return [
             'action' => [
                 'type' => 'text',
