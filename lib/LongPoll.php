@@ -32,10 +32,10 @@ class LongPoll{
                         break;
                 }
             }else{
-                $ts++;
-                if(isset($request['updates'][0]['type'])) {
-                    $object = $request['updates'][0]['object'];
-                    $type = $request['updates'][0]['type'];
+                $ts = $request['ts'];
+                foreach($request['updates'] as $upd) { 
+                    $object = $upd['object'];
+                    $type = $upd['type'];
                     if(isset($events[$type]))
                         $events[$type]($object, $Zero);
                 }
